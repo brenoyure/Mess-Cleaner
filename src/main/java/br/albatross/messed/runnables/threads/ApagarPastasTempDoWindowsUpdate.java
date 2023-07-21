@@ -18,9 +18,11 @@ public class ApagarPastasTempDoWindowsUpdate implements Runnable {
 				File newTempDir = new File(windowsUpdateDownloadDir.getAbsolutePath() + System.currentTimeMillis());
 				if (windowsUpdateDownloadDir.renameTo(newTempDir)) {
 					System.out.println(windowsUpdateDownloadDir + " renomeada para " + newTempDir);
+					Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + newTempDir.getAbsolutePath());
+				} else {
+					Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + windowsUpdateDownloadDir.getAbsolutePath());
 				}
 
-				Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + windowsUpdateDownloadDir.getAbsolutePath());
 				System.out.println("Arquivos temp do Windows Update apagados.");
 
 			}

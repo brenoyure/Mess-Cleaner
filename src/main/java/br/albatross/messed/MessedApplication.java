@@ -24,6 +24,7 @@ public class MessedApplication {
     		if (args[0].contentEquals("-h") || args[0].contentEquals("--help")) {
     			Help help = new Help();
     			help.exibir();
+    			return;
     		}
     	}
 

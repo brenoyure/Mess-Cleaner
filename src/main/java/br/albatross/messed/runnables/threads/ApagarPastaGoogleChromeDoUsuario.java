@@ -19,9 +19,12 @@ public class ApagarPastaGoogleChromeDoUsuario implements Runnable {
 				File newTempDir = new File(tempDir.getAbsolutePath() + System.currentTimeMillis());
 				if (tempDir.renameTo(newTempDir)) {
 					System.out.println(tempDir + " renomeada para " + newTempDir);
-					tempDir = newTempDir;
+					Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + newTempDir.getAbsolutePath());
+
+				} else {
+					Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + tempDir.getAbsolutePath());
 				}
-				Runtime.getRuntime().exec("cmd.exe /c rmdir /s /q " + tempDir.getAbsolutePath());
+
 				System.out.println("Arquivos temp do navegador Chrome do usuário " + userFolder.getName() + " apagados.");
 
 			}
